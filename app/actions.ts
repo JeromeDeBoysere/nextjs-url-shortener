@@ -49,5 +49,5 @@ export async function shortenUrl(originalUrl: string, customSlug?: string) {
     })
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-    return { shortUrl: `${baseUrl}/${shortCode}` }
+    return { shortUrl: `${baseUrl}${shortCode}` }
 }
