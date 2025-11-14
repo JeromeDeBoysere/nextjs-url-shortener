@@ -1,0 +1,32 @@
+node_modules
+dist
+build
+coverage
+public
+.cache
+
+# Next.js
+.next
+out
+
+# Package manager lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Prisma
+prisma/migrations
+
+# Environment files
+.env*
+
+# Config files (optional: remove if you want to format them)
+*.config.js
+*.config.ts
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+*.log

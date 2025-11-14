@@ -1,0 +1,33 @@
+# pnpm configuration for URL Shortener Next.js project
+
+# Améliore les performances en utilisant un store global
+store-dir=~/.pnpm-store
+
+# Utilise des liens symboliques pour économiser l'espace disque
+symlink=true
+
+# Active le hoisting pour de meilleures performances
+hoist=true
+hoist-pattern[]=*
+
+# Configuration de résolution des dépendances
+resolution-mode=highest
+prefer-workspace-packages=true
+
+# Sécurité et vérifications
+audit-level=moderate
+strict-peer-dependencies=false
+
+# Optimisations pour le développement
+enable-pre-post-scripts=true
+shamefully-hoist=false
+
+# Configuration du registre (optionnel, utilise NPM par défaut)
+registry=https://registry.npmjs.org/
+
+# Optimisations de cache
+verify-store-integrity=true
+cache-dir=~/.pnpm-cache
+
+# Configuration pour les environnements CI/CD
+frozen-lockfile=false
