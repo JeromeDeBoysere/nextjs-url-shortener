@@ -25,6 +25,26 @@ export function sanitizeSlug(slug: string): string {
 }
 
 /**
+ * Sanitize a slug for live input (keeps trailing hyphens to allow continued typing)
+ * @param {string} slug - The raw slug to sanitize
+ * @returns {string} The sanitized slug with trailing hyphens preserved
+ */
+export function sanitizeSlugLive(slug: string): string {
+  return slug
+      .toLowerCase()
+      // Normalize to NFD (Canonical Decomposition) - separates characters from their diacritics (é becomes e + ´)
+      .normalize('NFD')
+      // Replace all diacritical marks (accents) with empty string to remove them
+      .replace(/[\u0300-\u036f]/g, '')
+      // Replace any sequence of non-alphanumeric characters with a single hyphen
+      .replace(/[^a-z0-9]+/g, '-')
+      // Replace multiple consecutive hyphens with a single hyphen
+      .replace(/-+/g, '-')
+      // Remove leading hyphens only (keep trailing ones for continued typing)
+      .replace(/^-+/g, '')
+}
+
+/**
  * Validate a slug according to defined rules
  * @param {string} slug - The slug to validate
  * @returns {ValidateSlugResult} Validation result with error message if invalid
