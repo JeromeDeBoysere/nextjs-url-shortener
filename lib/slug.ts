@@ -1,5 +1,5 @@
 // Constants
-export const SLUG_RULES = { minLength: 3, maxLength: 50 } as const;
+export const SLUG_RULES = {minLength: 3, maxLength: 50} as const;
 
 // Types
 type ValidateSlugResult = { valid: true } | { valid: false; error: string }
@@ -10,18 +10,18 @@ type ValidateSlugResult = { valid: true } | { valid: false; error: string }
  * @returns {string} The sanitized slug
  */
 export function sanitizeSlug(slug: string): string {
-  return slug
-      .toLowerCase()
-      // Normalize to NFD (Canonical Decomposition) - separates characters from their diacritics (é becomes e + ´)
-      .normalize('NFD')
-      // Replace all diacritical marks (accents) with empty string to remove them
-      .replace(/[\u0300-\u036f]/g, '')
-      // Replace any sequence of non-alphanumeric characters with a single hyphen
-      .replace(/[^a-z0-9]+/g, '-')
-      // Replace leading and trailing hyphens with empty string
-      .replace(/^-+|-+$/g, '')
-      // Replace multiple consecutive hyphens with a single hyphen
-      .replace(/-+/g, '-')
+	return slug
+		.toLowerCase()
+		// Normalize to NFD (Canonical Decomposition) - separates characters from their diacritics (é becomes e + ´)
+		.normalize('NFD')
+		// Replace all diacritical marks (accents) with empty string to remove them
+		.replace(/[\u0300-\u036f]/g, '')
+		// Replace any sequence of non-alphanumeric characters with a single hyphen
+		.replace(/[^a-z0-9]+/g, '-')
+		// Replace leading and trailing hyphens with empty string
+		.replace(/^-+|-+$/g, '')
+		// Replace multiple consecutive hyphens with a single hyphen
+		.replace(/-+/g, '-')
 }
 
 /**
@@ -30,18 +30,18 @@ export function sanitizeSlug(slug: string): string {
  * @returns {string} The sanitized slug with trailing hyphens preserved
  */
 export function sanitizeSlugLive(slug: string): string {
-  return slug
-      .toLowerCase()
-      // Normalize to NFD (Canonical Decomposition) - separates characters from their diacritics (é becomes e + ´)
-      .normalize('NFD')
-      // Replace all diacritical marks (accents) with empty string to remove them
-      .replace(/[\u0300-\u036f]/g, '')
-      // Replace any sequence of non-alphanumeric characters with a single hyphen
-      .replace(/[^a-z0-9]+/g, '-')
-      // Replace multiple consecutive hyphens with a single hyphen
-      .replace(/-+/g, '-')
-      // Remove leading hyphens only (keep trailing ones for continued typing)
-      .replace(/^-+/g, '')
+	return slug
+		.toLowerCase()
+		// Normalize to NFD (Canonical Decomposition) - separates characters from their diacritics (é becomes e + ´)
+		.normalize('NFD')
+		// Replace all diacritical marks (accents) with empty string to remove them
+		.replace(/[\u0300-\u036f]/g, '')
+		// Replace any sequence of non-alphanumeric characters with a single hyphen
+		.replace(/[^a-z0-9]+/g, '-')
+		// Replace multiple consecutive hyphens with a single hyphen
+		.replace(/-+/g, '-')
+		// Remove leading hyphens only (keep trailing ones for continued typing)
+		.replace(/^-+/g, '')
 }
 
 /**
@@ -51,13 +51,11 @@ export function sanitizeSlugLive(slug: string): string {
  */
 export function validateSlug(slug: string): ValidateSlugResult {
 
-    if (!slug || slug.length < SLUG_RULES.minLength) {
-        return { valid: false, error: `Trop court ! Entrez au moins ${SLUG_RULES.minLength} caractères` }
-    }
+	if (!slug || slug.length < SLUG_RULES.minLength) {
+		return {valid: false, error: `Trop court ! Entrez au moins ${SLUG_RULES.minLength} caractères`}
+	} else if (slug.length > SLUG_RULES.maxLength) {
+		return {valid: false, error: `Trop long ! Entrez au maximum ${SLUG_RULES.maxLength} caractères`}
+	}
 
-    else if (slug.length > SLUG_RULES.maxLength) {
-        return { valid: false, error: `Trop long ! Entrez au maximum ${SLUG_RULES.maxLength} caractères` }
-    }
-
-    return { valid: true }
+	return {valid: true}
 }

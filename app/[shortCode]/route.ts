@@ -5,7 +5,7 @@ type RouteContext = {
 	params: Promise<{ shortCode: string }>
 }
 
-export async function GET (request: NextRequest, context: RouteContext) {
+export async function GET(request: NextRequest, context: RouteContext) {
 	const params = await context.params
 	const shortCode = params.shortCode
 
