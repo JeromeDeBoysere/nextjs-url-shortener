@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# URL Shortener
+
+> **Personal training project** - Learning Next.js 16, React 19 and modern web development.
+>
+> **Status:** 🚧 In Development | [See progress →](#features)
+>
+> **Author:** Jérôme de Boysère ([LinkedIn](https://www.linkedin.com/in/jeromedeboysere/))
+
+A URL shortening application built with Next.js 16 and Prisma. Transform long URLs into short, shareable links with click tracking and custom slug support.
+
+## Features
+
+### Implemented
+
+- ✅ URL shortening form with validation
+- ✅ Auto-generated unique slugs (6 characters)
+- ✅ Custom slug support (optional)
+- ✅ Modal dialog for shortened URL display
+- ✅ Copy to clipboard functionality
+- ✅ Prisma ORM with PostgreSQL
+- ✅ Server Actions for form handling
+- ✅ Automatic redirection via Route Handler
+- ✅ Click tracking
+- ✅ Responsive design with Tailwind CSS
+- ✅ shadcn/ui components (Button, Dialog, Input, Switch, Label, Card, Table)
+
+### Roadmap
+
+- [ ] Stats page with all created links
+- [ ] Deployment on Vercel
+
+## Tech Stack
+
+| Category         | Technologies                          |
+| ---------------- | ------------------------------------- |
+| Framework        | Next.js 16, React 19, TypeScript 5    |
+| Database         | Prisma ORM, PostgreSQL (Supabase)     |
+| UI Components    | shadcn/ui (Radix UI), Lucide React    |
+| Styling          | Tailwind CSS v4, CVA                  |
+| Utilities        | clsx, tailwind-merge                  |
+| Code Quality     | ESLint 9                              |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- pnpm
+- PostgreSQL database (or [Supabase](https://supabase.com/) free tier)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/jeromedeboysere/nextjs-url-shortener.git
+cd nextjs-url-shortener
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env` file at the project root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/url_shortener"
+```
 
-## Learn More
+### Database Setup
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm prisma generate
+pnpm prisma db push
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+```
 
-## Deploy on Vercel
+The application will be available at `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/              Next.js App Router pages
+components/       React components
+  ui/             shadcn/ui base components
+lib/              Utilities and helpers
+prisma/           Database schema and migrations
+```
+
+## Scripts
+
+| Command            | Description                  |
+| ------------------ | ---------------------------- |
+| `pnpm dev`         | Start development server     |
+| `pnpm build`       | Build for production         |
+| `pnpm start`       | Start production server      |
+| `pnpm lint`        | Run ESLint                   |
+| `pnpm prisma studio` | Open Prisma database GUI   |
+
+## How It Works
+
+1. User enters a long URL in the form
+2. Optionally toggle custom slug mode to create a personalized short link
+3. Server generates a unique 6-character slug (or validates custom slug)
+4. Short URL is stored in PostgreSQL via Prisma
+5. User receives the shortened URL in a modal dialog
+6. When someone visits the short URL, they are redirected to the original
+
+## License
+
+MIT
