@@ -114,7 +114,7 @@ export default async function Page() {
 			<div className="pt-4 text-center">
 				<Button asChild
 						variant="outline">
-					<Link href="/">Retour à la homepage</Link>
+					<Link href="/">Retour à l'accueil</Link>
 				</Button>
 			</div>
 

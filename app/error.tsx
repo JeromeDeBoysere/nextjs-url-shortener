@@ -34,19 +34,23 @@ export default function Error({
 				</p>
 
 				<div className="flex justify-center gap-4">
-					<Button
-						onClick={() => window.location.reload()}
-					>
-						Reessayer
-					</Button>
 					<Button asChild
-							variant="outline">
+							variant="secondary">
 						<Link
 							href="https://www.linkedin.com/in/jeromedeboysere"
 							target="_blank"
 						>
 							Contactez-moi sur LinkedIn
 						</Link>
+					</Button>
+					<Button asChild
+							variant="outline">
+						<Link href="/">Retour à l'accueil</Link>
+					</Button>
+					<Button
+						onClick={() => window.location.reload()}
+					>
+						Réessayer
 					</Button>
 				</div>
 
