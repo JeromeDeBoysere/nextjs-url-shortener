@@ -2,7 +2,7 @@
 
 > **Personal training project** - Learning Next.js 16, React 19 and modern web development.
 >
-> **Status:** ✅ Complete | [See features →](#features)
+> **Status:** ✅ Complete | [See roadmap →](#roadmap)
 >
 > **Author:** Jérôme de Boysère ([LinkedIn](https://www.linkedin.com/in/jeromedeboysere/))
 
@@ -10,27 +10,23 @@ A URL shortening application built with Next.js 16 and Prisma. Transform long UR
 
 **[View Live Demo on Vercel →](https://nextjs-url-shortener-gamma.vercel.app/)**
 
-## Features
+## Roadmap
 
-### Implemented
+- [x] URL shortening form with validation
+- [x] Auto-generated unique slugs (6 characters)
+- [x] Custom slug support (optional)
+- [x] Modal dialog for shortened URL display
+- [x] Copy to clipboard functionality
+- [x] Prisma ORM with PostgreSQL
+- [x] Server Actions for form handling
+- [x] Automatic redirection via Route Handler
+- [x] Click tracking
+- [x] Responsive design with Tailwind CSS
+- [x] shadcn/ui components (Button, Dialog, Input, Switch, Label, Card, Table, Tooltip)
+- [x] Stats page with click tracking and sorting
+- [x] Global error boundary for database errors
+- [x] Deployment on Vercel
 
-- ✅ URL shortening form with validation
-- ✅ Auto-generated unique slugs (6 characters)
-- ✅ Custom slug support (optional)
-- ✅ Modal dialog for shortened URL display
-- ✅ Copy to clipboard functionality
-- ✅ Prisma ORM with PostgreSQL
-- ✅ Server Actions for form handling
-- ✅ Automatic redirection via Route Handler
-- ✅ Click tracking
-- ✅ Responsive design with Tailwind CSS
-- ✅ shadcn/ui components (Button, Dialog, Input, Switch, Label, Card, Table, Tooltip)
-
-### Roadmap
-
-- ✅ Stats page with click tracking and sorting
-- ✅ Global error boundary for database errors
-- ✅ Deployment on Vercel
 
 ## Tech Stack
 
