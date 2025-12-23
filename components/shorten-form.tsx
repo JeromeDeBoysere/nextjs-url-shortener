@@ -96,7 +96,7 @@ export function ShortenForm() {
 			}
 		}, 500)
 
-		// Cleanup: cancel timeout if user types again
+		// Cancel timeout if user types again
 		return () => clearTimeout(timeoutId)
 	}, [customSlug, useCustomSlug])
 
