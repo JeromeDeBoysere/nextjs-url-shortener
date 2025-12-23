@@ -89,7 +89,7 @@ export function ShortenForm() {
 					setSlugStatus('unavailable')
 					setSlugMessage(`Mince, ce n'est pas disponible...`)
 				}
-			} catch (err) {
+			} catch {
 				// Handle unexpected errors
 				setSlugStatus('invalid')
 				setSlugMessage(`Erreur lors de la vérification`)
