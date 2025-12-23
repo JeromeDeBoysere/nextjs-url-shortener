@@ -198,7 +198,7 @@ export function ShortenForm() {
 					className="w-full"
 					size="lg"
 				>
-					{loading ? <Spinner size="sm" className="text-white mr-2"/> : ('✨ Raccourcir')}
+					{loading ? <Spinner className="text-white mr-2"/> : ('✨ Raccourcir')}
 				</Button>
 			</form>
 
