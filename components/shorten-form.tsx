@@ -165,7 +165,7 @@ export function ShortenForm() {
 					{slugStatus === 'checking' && (
 						<Alert className="mt-2 bg-yellow-50 border-yellow-400">
 							<AlertDescription className="flex items-center gap-2">
-								<Spinner size="sm"/>
+								<Spinner/>
 								<span>Un instant, nous vérifions la disponibilité...</span>
 							</AlertDescription>
 						</Alert>
