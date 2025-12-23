@@ -2,11 +2,13 @@
 
 > **Personal training project** - Learning Next.js 16, React 19 and modern web development.
 >
-> **Status:** 🚧 In Development | [See progress →](#features)
+> **Status:** ✅ Complete | [See features →](#features)
 >
 > **Author:** Jérôme de Boysère ([LinkedIn](https://www.linkedin.com/in/jeromedeboysere/))
 
 A URL shortening application built with Next.js 16 and Prisma. Transform long URLs into short, shareable links with click tracking and custom slug support.
+
+**[View Live Demo on Vercel →](https://nextjs-url-shortener-gamma.vercel.app/)**
 
 ## Features
 
@@ -22,23 +24,24 @@ A URL shortening application built with Next.js 16 and Prisma. Transform long UR
 - ✅ Automatic redirection via Route Handler
 - ✅ Click tracking
 - ✅ Responsive design with Tailwind CSS
-- ✅ shadcn/ui components (Button, Dialog, Input, Switch, Label, Card, Table)
+- ✅ shadcn/ui components (Button, Dialog, Input, Switch, Label, Card, Table, Tooltip)
 
 ### Roadmap
 
-- [ ] Stats page with all created links
-- [ ] Deployment on Vercel
+- ✅ Stats page with click tracking and sorting
+- ✅ Global error boundary for database errors
+- ✅ Deployment on Vercel
 
 ## Tech Stack
 
-| Category         | Technologies                          |
-| ---------------- | ------------------------------------- |
-| Framework        | Next.js 16, React 19, TypeScript 5    |
-| Database         | Prisma ORM, PostgreSQL (Supabase)     |
-| UI Components    | shadcn/ui (Radix UI), Lucide React    |
-| Styling          | Tailwind CSS v4, CVA                  |
-| Utilities        | clsx, tailwind-merge                  |
-| Code Quality     | ESLint 9                              |
+| Category         | Technologies                           |
+| ---------------- | -------------------------------------- |
+| Framework        | Next.js 16.1, React 19.2, TypeScript 5 |
+| Database         | Prisma 6.19, PostgreSQL (Supabase)     |
+| UI Components    | shadcn/ui (Radix UI), Lucide React     |
+| Styling          | Tailwind CSS v4, CVA                   |
+| Utilities        | clsx, tailwind-merge                   |
+| Code Quality     | ESLint 9                               |
 
 ## Getting Started
 
