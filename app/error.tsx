@@ -13,8 +13,7 @@ const PRISMA_ERRORS = [
 ];
 
 export default function Error({
-								  error,
-								  reset,
+								  error
 							  }: {
 	error: Error;
 	reset: () => void;

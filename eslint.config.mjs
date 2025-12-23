@@ -13,6 +13,14 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Allow French apostrophes in JSX
+      "react/no-unescaped-entities": "off",
+      // Allow empty interfaces extending other types
+      "@typescript-eslint/no-empty-object-type": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
