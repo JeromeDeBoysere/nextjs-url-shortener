@@ -29,10 +29,19 @@ export default function Error({
 					Quelque chose s&apos;est mal passé
 				</h2>
 				<p className="text-gray-600 mb-6">
-					{isDatabaseError ? "Ce projet est en pause auprès de Supabase. Contactez-moi pour le réactiver." : "Reessayez dans quelques instants."}
+					{isDatabaseError ? "Ce projet est probablement en pause auprès de Supabase. Contactez-moi pour le réactiver." : "Reessayez dans quelques instants."}
 				</p>
 
 				<div className="flex justify-center gap-4">
+					<Button
+						onClick={() => window.location.reload()}
+					>
+						Réessayer
+					</Button>
+					<Button asChild
+							variant="outline">
+						<Link href="/">Retour à l'accueil</Link>
+					</Button>
 					<Button asChild
 							variant="secondary">
 						<Link
@@ -41,15 +50,6 @@ export default function Error({
 						>
 							Contactez-moi sur LinkedIn
 						</Link>
-					</Button>
-					<Button asChild
-							variant="outline">
-						<Link href="/">Retour à l'accueil</Link>
-					</Button>
-					<Button
-						onClick={() => window.location.reload()}
-					>
-						Réessayer
 					</Button>
 				</div>
 

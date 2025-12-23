@@ -23,7 +23,7 @@ export default async function Page() {
 		orderBy: {clicks: "desc"},
 	});
 
-	const host = typeof window !== 'undefined' ? `${window.location.origin}` : 'http://localhost:3000/';
+	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 	return <main className="min-h-screen bg-gray-100 py-12 px-4">
 		<div className="max-w-6xl mx-auto">
@@ -68,15 +68,15 @@ export default async function Page() {
 												<Tooltip>
 													<TooltipTrigger asChild>
 														<a
-															href={`${host}${link.shortCode}`}
+															href={`${baseUrl}${link.shortCode}`}
 															className="block truncate text-blue-600 hover:underline"
 															target="blank"
 														>
-															{`${host}${link.shortCode}`}
+															{`${baseUrl}${link.shortCode}`}
 														</a>
 													</TooltipTrigger>
 													<TooltipContent>
-														<p className="max-w-sm break-all">{`${host}${link.shortCode}`}</p>
+														<p className="max-w-sm break-all">{`${baseUrl}${link.shortCode}`}</p>
 													</TooltipContent>
 												</Tooltip>
 											</TableCell>

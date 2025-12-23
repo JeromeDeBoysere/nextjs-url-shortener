@@ -150,7 +150,7 @@ export function ShortenForm() {
 					<InputGroup>
 						<InputGroupAddon>
 							<InputGroupText
-								className="relative top-[1px]">{typeof window !== 'undefined' ? `${window.location.origin}/` : 'http://localhost:3000/'}</InputGroupText>
+								className="relative top-[1px]">{process.env.NEXT_PUBLIC_BASE_URL}</InputGroupText>
 						</InputGroupAddon>
 						<InputGroupInput
 							placeholder="tiny-url"
