@@ -28,14 +28,15 @@ A URL shortening application built with Next.js 16 and Prisma. Transform long UR
 
 ## Tech Stack
 
-| Category         | Technologies                           |
-| ---------------- | -------------------------------------- |
-| Framework        | Next.js 16.1, React 19.2, TypeScript 5 |
-| Database         | Prisma 6.19, PostgreSQL (Supabase)     |
-| UI Components    | shadcn/ui (Radix UI), Lucide React     |
-| Styling          | Tailwind CSS v4, CVA                   |
-| Utilities        | clsx, tailwind-merge                   |
-| Code Quality     | ESLint 9                               |
+| Category      | Technologies                           |
+| ------------- | -------------------------------------- |
+| Framework     | Next.js 16.1, React 19.2, TypeScript 5 |
+| Database      | Prisma 6.19, PostgreSQL (Supabase)     |
+| UI Components | shadcn/ui (Radix UI), Lucide React     |
+| Styling       | Tailwind CSS v4, CVA                   |
+| Utilities     | clsx, tailwind-merge                   |
+| Code Quality  | ESLint, Prettier                       |
+| Git Hooks     | Husky, lint-staged, Commitlint         |
 
 ## Getting Started
 
@@ -88,13 +89,40 @@ prisma/           Database schema and migrations
 
 ## Scripts
 
-| Command            | Description                  |
-| ------------------ | ---------------------------- |
-| `pnpm dev`         | Start development server     |
-| `pnpm build`       | Build for production         |
-| `pnpm start`       | Start production server      |
-| `pnpm lint`        | Run ESLint                   |
-| `pnpm prisma studio` | Open Prisma database GUI   |
+| Command              | Description               |
+| -------------------- | ------------------------- |
+| `pnpm dev`           | Start development server  |
+| `pnpm build`         | Build for production      |
+| `pnpm start`         | Start production server   |
+| `pnpm lint`          | Run ESLint                |
+| `pnpm lint:fix`      | Run ESLint with auto-fix  |
+| `pnpm format`        | Format code with Prettier |
+| `pnpm format:check`  | Check code formatting     |
+| `pnpm prisma studio` | Open Prisma database GUI  |
+
+## Git Hooks
+
+This project uses **Husky** to enforce code quality before commits and pushes:
+
+| Hook         | Trigger      | Action                              |
+| ------------ | ------------ | ----------------------------------- |
+| `pre-commit` | `git commit` | TypeScript check + lint-staged      |
+| `commit-msg` | `git commit` | Validate commit message format      |
+| `pre-push`   | `git push`   | Full production build (like Vercel) |
+
+### Commit Message Format
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+feat: add new feature
+fix: resolve bug
+docs: update documentation
+style: formatting changes
+refactor: code restructuring
+test: add tests
+chore: maintenance tasks
+```
 
 ## How It Works
 
