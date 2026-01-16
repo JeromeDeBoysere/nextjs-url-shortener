@@ -1,4 +1,4 @@
-# URL Shortener
+# Project 1 - URL Shortener
 
 > **Personal training project** - Learning Next.js 16, React 19 and modern web development.
 >
