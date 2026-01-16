@@ -140,7 +140,7 @@ export function ShortenForm() {
 				<div className="space-y-2">
 					<div className="flex items-center space-x-2">
 						<Label htmlFor="useCustomSlug">Personnaliser l'URL raccourcie ?</Label>
-						<Switch id="useCustomSlug" defaultChecked={true} checked={useCustomSlug}
+						<Switch id="useCustomSlug" defaultChecked={false} checked={useCustomSlug}
 								onCheckedChange={(checked) => setUseCustomSlug(checked)}/>
 					</div>
 				</div>

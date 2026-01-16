@@ -1,4 +1,5 @@
 import {prisma} from "@/lib/prisma";
+import type {Link as LinkType} from "@prisma/client";
 import {
 	Table,
 	TableBody,
@@ -53,7 +54,7 @@ export default async function Page() {
 								</TableRow>
 							</TableHeader>
 							<TableBody>
-								{links.map((link) => {
+								{links.map((link: LinkType) => {
 
 									const date = new Intl.DateTimeFormat('fr-FR', {
 										weekday: 'long',
