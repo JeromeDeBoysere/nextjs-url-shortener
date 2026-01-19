@@ -15,58 +15,59 @@ export default async function Page() {
 	noStore();
 
 	const links = await prisma.link.findMany({
-		orderBy: { clicks: 'desc' },
+		orderBy: { createdAt: 'desc' },
 	});
 
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 	return (
 		<main>
-			<div className="max-w-6xl mx-auto">
+			<div className="max-w-5xl mx-auto">
+				{/* Header */}
 				<div className="text-center mb-12">
-					<h1 className="text-5xl font-bold text-gray-900 mb-4">Projet 1 : URL Shortener</h1>
-					<p className="text-gray-600 text-lg">Statistiques de chaque lien raccourci.</p>
+					<h1 className="text-5xl font-semibold tracking-tight text-white mb-4">Statistiques</h1>
+					<p className="text-lg text-slate-400 font-light">Suivez les performances de tous les liens</p>
 				</div>
 
-				<Card className="mb-6">
-					<CardContent>
+				{/* Table card */}
+				<Card className="shadow-2xl border-0 bg-white/10 backdrop-blur-md border border-white/20 mb-8">
+					<CardContent className="pt-6">
 						{links.length > 0 ? (
 							<Table>
-								<TableCaption>{links.length} résultats.</TableCaption>
+								<TableCaption className="text-slate-500">
+									{links.length} lien{links.length > 1 ? 's' : ''}
+								</TableCaption>
 								<TableHeader>
-									<TableRow>
-										<TableHead>Lien raccourci</TableHead>
-										<TableHead>Destination</TableHead>
-										<TableHead>Date de création</TableHead>
-										<TableHead className="text-right">Clicks</TableHead>
+									<TableRow className="border-white/10 hover:bg-transparent">
+										<TableHead className="text-slate-300">Lien court</TableHead>
+										<TableHead className="text-slate-300">Destination</TableHead>
+										<TableHead className="text-slate-300">Créé le</TableHead>
+										<TableHead className="text-right text-slate-300">Clics</TableHead>
 									</TableRow>
 								</TableHeader>
 								<TableBody>
 									{links.map((link: LinkType) => {
 										const date = new Intl.DateTimeFormat('fr-FR', {
-											weekday: 'long',
-											year: 'numeric',
-											month: 'long',
 											day: 'numeric',
-											hour: '2-digit',
-											minute: '2-digit',
+											month: 'short',
+											year: 'numeric',
 										}).format(link.createdAt);
 
 										return (
-											<TableRow key={link.id}>
+											<TableRow key={link.id} className="border-white/10 hover:bg-white/5">
 												<TableCell className="max-w-xs">
 													<Tooltip>
 														<TooltipTrigger asChild>
 															<a
 																href={`${baseUrl}${link.shortCode}`}
-																className="block truncate text-blue-600 hover:underline"
-																target="blank"
+																className="block truncate text-blue-400 hover:text-blue-300 transition-colors"
+																target="_blank"
 															>
-																{`${baseUrl}${link.shortCode}`}
+																{link.shortCode}
 															</a>
 														</TooltipTrigger>
 														<TooltipContent>
-															<p className="max-w-sm break-all">{`${baseUrl}${link.shortCode}`}</p>
+															<span className="max-w-sm break-all">{`${baseUrl}${link.shortCode}`}</span>
 														</TooltipContent>
 													</Tooltip>
 												</TableCell>
@@ -75,33 +76,38 @@ export default async function Page() {
 														<TooltipTrigger asChild>
 															<a
 																href={link.originalUrl}
-																className="block truncate text-blue-600 hover:underline"
-																target="blank"
+																className="block truncate text-slate-300 hover:text-white transition-colors"
+																target="_blank"
 															>
 																{link.originalUrl}
 															</a>
 														</TooltipTrigger>
 														<TooltipContent>
-															<p className="max-w-sm break-all">{link.originalUrl}</p>
+															<span className="max-w-sm break-all">
+																{link.originalUrl}
+															</span>
 														</TooltipContent>
 													</Tooltip>
 												</TableCell>
-												<TableCell>{date}</TableCell>
-												<TableCell className="text-right">{link.clicks}</TableCell>
+												<TableCell className="text-slate-400">{date}</TableCell>
+												<TableCell className="text-right">
+													<span className="text-white font-medium">{link.clicks}</span>
+												</TableCell>
 											</TableRow>
 										);
 									})}
 								</TableBody>
 							</Table>
 						) : (
-							<p className="text-center text-gray-500 py-8">Aucun résultat.</p>
+							<p className="text-center text-slate-400 py-12">Aucun lien créé pour le moment.</p>
 						)}
 					</CardContent>
 				</Card>
 
-				<div className="pt-4 text-center">
-					<Button asChild variant="outline">
-						<Link href="/">Retour à l'accueil</Link>
+				{/* Back button */}
+				<div className="text-center">
+					<Button asChild variant="ghost" className="text-slate-400 hover:text-white hover:bg-white/10">
+						<Link href="/">← Retour à l'accueil</Link>
 					</Button>
 				</div>
 			</div>

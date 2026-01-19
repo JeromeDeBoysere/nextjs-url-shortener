@@ -57,10 +57,10 @@ function DatabaseStatus() {
 	return (
 		<Tooltip>
 			<TooltipTrigger asChild>
-				<div className="flex items-center gap-2 cursor-default">
+				<span className="inline-flex items-center gap-1 cursor-default ml-1">
 					<span className={getStatusClasses()} aria-hidden="true" />
-					<span className="text-sm text-gray-500">Supabase</span>
-				</div>
+					<span>Supabase</span>
+				</span>
 			</TooltipTrigger>
 			<TooltipContent>
 				<p>{getTooltipMessage()}</p>

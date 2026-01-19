@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="fr">
-			<body className={`${roboto.variable} antialiased min-h-screen flex flex-col bg-gray-100 py-12 px-4`}>
+			<body
+				className={`${roboto.variable} antialiased min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 py-16 px-4`}
+			>
 				<div className="flex-1">{children}</div>
 				<Footer />
 			</body>

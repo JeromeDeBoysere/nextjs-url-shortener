@@ -28,15 +28,15 @@ A URL shortening application built with Next.js 16 and Prisma. Transform long UR
 
 ## Tech Stack
 
-| Category      | Technologies                           |
-| ------------- | -------------------------------------- |
-| Framework     | Next.js 16.1, React 19.2, TypeScript 5 |
-| Database      | Prisma 6.19, PostgreSQL (Supabase)     |
-| UI Components | shadcn/ui (Radix UI), Lucide React     |
-| Styling       | Tailwind CSS v4, CVA                   |
-| Utilities     | clsx, tailwind-merge                   |
-| Code Quality  | ESLint, Prettier                       |
-| Git Hooks     | Husky, lint-staged, Commitlint         |
+| Category      | Technologies                       |
+| ------------- | ---------------------------------- |
+| Framework     | Next.js 16, React 19, TypeScript 5 |
+| Database      | Prisma 6, PostgreSQL (Supabase)    |
+| UI Components | shadcn/ui (Radix UI), Lucide React |
+| Styling       | Tailwind CSS 4                     |
+| Utilities     | clsx, tailwind-merge               |
+| Code Quality  | ESLint, Prettier                   |
+| Git Hooks     | Husky, lint-staged, Commitlint     |
 
 ## Getting Started
 
