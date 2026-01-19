@@ -59,8 +59,23 @@ pnpm install
 Create a `.env` file at the project root:
 
 ```env
+# Database connection (Prisma)
 DATABASE_URL="postgresql://user:password@localhost:5432/url_shortener"
+
+# Base URL for short links
+NEXT_PUBLIC_BASE_URL="http://localhost:3000/"
+
+# Supabase configuration
+NEXT_PUBLIC_SUPABASE_URL="https://your-project.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="your-anon-key"
 ```
+
+| Variable                        | Description                           |
+| ------------------------------- | ------------------------------------- |
+| `DATABASE_URL`                  | PostgreSQL connection string (Prisma) |
+| `NEXT_PUBLIC_BASE_URL`          | Base URL for generated short links    |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Supabase project URL                  |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous API key            |
 
 ### Database Setup
 

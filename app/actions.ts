@@ -1,8 +1,8 @@
-'use server'
+'use server';
 
-import {prisma} from '@/lib/prisma'
-import {nanoid} from 'nanoid'
-import {sanitizeSlug, validateSlug} from '@/lib/slug'
+import { prisma } from '@/lib/prisma';
+import { nanoid } from 'nanoid';
+import { sanitizeSlug, validateSlug } from '@/lib/slug';
 
 /**
  * Check if a slug is available in the database
@@ -11,65 +11,82 @@ import {sanitizeSlug, validateSlug} from '@/lib/slug'
  */
 export async function checkSlugAvailability(slug: string) {
 	// Sanitize the slug (removes trailing hyphens, etc.)
-	const sanitized = sanitizeSlug(slug)
+	const sanitized = sanitizeSlug(slug);
 
 	// Validate the sanitized slug
-	const validation = validateSlug(sanitized)
+	const validation = validateSlug(sanitized);
 
 	if (!validation.valid) {
 		return {
 			available: false,
 			sanitized,
-			error: validation.error
-		}
+			error: validation.error,
+		};
 	}
 
 	// Check if slug exists in database
 	const existing = await prisma.link.findUnique({
-		where: {shortCode: sanitized}
-	})
+		where: { shortCode: sanitized },
+	});
 
 	return {
 		available: !existing,
-		sanitized
-	}
+		sanitized,
+	};
 }
 
 export async function shortenUrl(originalUrl: string, customSlug?: string) {
 	if (!originalUrl || !originalUrl.startsWith('http')) {
-		throw new Error('URL invalide')
+		throw new Error('URL invalide');
 	}
 
-	let shortCode: string
+	let shortCode: string;
 
 	if (customSlug && customSlug != '') {
-		shortCode = sanitizeSlug(customSlug)
+		shortCode = sanitizeSlug(customSlug);
 
 		// Validate slug
-		const validation = validateSlug(shortCode)
+		const validation = validateSlug(shortCode);
 		if (!validation.valid) {
-			throw new Error(validation.error)
+			throw new Error(validation.error);
 		}
 	} else {
-		shortCode = nanoid(6)
+		shortCode = nanoid(6);
 	}
 
 	const existing = await prisma.link.findUnique({
-		where: {shortCode}
-	})
+		where: { shortCode },
+	});
 
 	if (existing) {
-		throw new Error(`Mince, ce n'est pas disponible...`)
+		throw new Error(`Mince, ce n'est pas disponible...`);
 	}
 
 	await prisma.link.create({
 		data: {
 			originalUrl,
-			shortCode
-		}
-	})
+			shortCode,
+		},
+	});
 
-	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
-	return {shortUrl: `${baseUrl}${shortCode}`}
+	return { shortUrl: `${baseUrl}${shortCode}` };
+}
+
+/**
+ * Check database connectivity status
+ * @returns Database status (online/offline) and latency in ms
+ */
+export async function checkDatabaseHealth(): Promise<{
+	status: 'online' | 'offline';
+}> {
+	const startTime = Date.now();
+	try {
+		await prisma.$queryRaw`SELECT 1`;
+		return { status: 'online' };
+	} catch (error) {
+		console.error('Database health check failed:', error);
+		return { status: 'offline' };
+	}
 }
